@@ -28,25 +28,37 @@
     </script>
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <nav class="bg-white shadow-md py-4 px-6 flex flex-row md:flex-row justify-between items-center sticky top-0 z-50">
-        <div class="flex items-center">
-            <img src="assets/logo.png" alt="Emergency Services Logo" class="h-8 w-8 mr-3">
-            <span class="text-xl font-bold text-primary">Emergency <br> Services</span>
+<nav class="bg-white shadow-md py-4 px-6 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50">
+    <!-- Left: Logo & Name -->
+    <div class="flex items-center mb-4 md:mb-0">
+        <img src="assets/logo.png" alt="Emergency Services Logo" class="h-8 w-8 mr-3">
+        <span class="text-xl font-bold text-primary leading-tight">
+            Emergency <br> Services
+        </span>
+    </div>
+
+    <!-- Right: Counters -->
+    <div class="flex flex-wrap md:flex-nowrap items-center gap-4">
+        <!-- Heart Counter -->
+        <div class="flex items-center bg-green-100 text-black font-bold rounded-full py-2 px-4">
+            <span id="heart-count" class="font-medium">0</span>
+            <img src="assets/heart.png" alt="Heart" class="w-6 h-6 ml-2">
         </div>
-        <div class="flex items-center space-x-6 mt-4 md:mt-0">
-            <div class="flex items-center ml-1 btn text-black font-bold flex-2 rounded-full py-2 px-4 bg-green-100 flex items-center">
-                <span id="heart-count" class="font-medium">0</span>
-                <img src="assets/heart.png" alt="Heart" class="w-6 h-6 ml-2">
-            </div>
-            <div class="flex items-center ml-1 btn text-black font-bold flex-2 rounded-full py-2 px-4 bg-green-100 flex items-center">
-                <span id="coin-count" class="font-medium">100</span>
-                <img src="assets/coin.png" alt="Coin" class="w-6 h-6 ml-2">
-            </div>
-            <div class="flex items-center">
-                <span class="ml-1 btn text-white flex-2 rounded-full py-2 px-4 bg-green-500 flex items-center"><span id="copy-count" class="font-medium mr-1">0</span>Copy</span>
-            </div>
+
+        <!-- Coin Counter -->
+        <div class="flex items-center bg-green-100 text-black font-bold rounded-full py-2 px-4">
+            <span id="coin-count" class="font-medium">100</span>
+            <img src="assets/coin.png" alt="Coin" class="w-6 h-6 ml-2">
         </div>
-    </nav>
+
+        <!-- Copy Button -->
+        <button class="flex items-center bg-green-500 text-white font-bold rounded-full py-2 px-4">
+            <span id="copy-count" class="font-medium mr-1">0</span>
+            Copy
+        </button>
+    </div>
+</nav>
+
 
     <section class="bg-gradient-to-r from-[rgb(30,47,57)] via-[rgb(15,92,52)] to-[rgb(30,47,57)] lg:px-16 px-6 py-7 text-center">
         <div class="container mx-auto px-4 flex justify-center mb-6">
