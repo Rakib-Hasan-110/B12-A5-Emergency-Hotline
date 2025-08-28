@@ -169,3 +169,67 @@ function updateStats() {
     coinCountElement.textContent = coinCount;
     copyCountElement.textContent = copyCount;
 }
+
+// Handle copy button click
+function handleCopyClick(e) {
+    const button = e.currentTarget;
+    const number = button.getAttribute('data-number');
+    const name = button.getAttribute('data-name');
+
+    // Copy to clipboard
+    copyToClipboard(number, name);
+}
+
+// Function to copy text to clipboard
+function copyToClipboard(text, serviceName) {
+    // Create a temporary textarea element
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+
+    // Select and copy the text
+    textarea.select();
+
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            alert('Number copied to clipboard!');
+            copyCount++;
+            updateStats();
+        } else {
+            alert('Failed to copy number');
+        }
+    } catch (err) {
+        alert('Failed to copy number');
+        console.error('Could not copy text: ', err);
+    }
+    
+    // Clean up
+    document.body.removeChild(textarea);
+}
+
+// Handle call button click
+function handleCallClick(e) {
+    const button = e.currentTarget;
+    const number = button.getAttribute('data-number');
+    const name = button.getAttribute('data-name');
+
+    // Check if user has enough coins
+    if (coinCount < 20) {
+        alert('Not enough coins to make a call. Minimum 20 coins required.', 'error');
+        return;
+    }
+
+    // Deduct coins
+    coinCount -= 20;
+    updateStats();
+
+    // Show alert
+    alert(`Calling ${name} at ${number}....`);
+
+    // Add to call history with exact time
+    addToHistory(name, number);
+}
