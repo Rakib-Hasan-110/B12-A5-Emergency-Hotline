@@ -170,6 +170,25 @@ function updateStats() {
     copyCountElement.textContent = copyCount;
 }
 
+// Handle heart button click
+function handleHeartClick(e) {
+    const heartBtn = e.currentTarget;
+    const heartIcon = heartBtn.querySelector('i');
+
+    heartIcon.classList.toggle('far');
+    heartIcon.classList.toggle('fas');
+
+    if (heartIcon.classList.contains('fas')) {
+        heartCount++;
+        heartBtn.classList.add('text-red-500');
+    } else {
+        heartCount--;
+        heartBtn.classList.remove('text-red-500');
+    }
+
+    updateStats();
+}
+
 // Handle copy button click
 function handleCopyClick(e) {
     const button = e.currentTarget;
@@ -284,3 +303,6 @@ function clearHistory() {
     renderHistory();
     alert('Call history cleared');
 }
+
+// Initialize the application when DOM is loaded
+document.addEventListener('DOMContentLoaded', init);
