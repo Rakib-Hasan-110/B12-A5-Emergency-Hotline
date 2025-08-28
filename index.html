@@ -47,5 +47,43 @@
             </div>
         </div>
     </nav>
+
+    <section class="bg-gradient-to-r from-[rgb(30,47,57)] via-[rgb(15,92,52)] to-[rgb(30,47,57)] lg:px-16 px-6 py-7 text-center">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center mb-6">
+                <img src="/assets/logo.png" alt="Bangladesh Government Logo" class="w-[92px] h-[92px]">
+            </div>
+            <h1 class="text-4xl font-bold text-white mb-4">Emergency Service Directory</h1>
+            <p class="text-xl text-white max-w-3xl mx-auto">
+                Government Emergency Services at Your Fingertip - A Project by Government of the People's Republic of Bangladesh
+            </p>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="w-full lg:w-3/4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="card-container">
+                    </div>
+            </div>
+            
+            <div class="w-full lg:w-1/4 bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-6 pb-3 border-b">
+                    <h2 class="text-xl font-bold flex items-center">
+                        <i class="fas fa-history text-primary mr-2"></i>
+                        Call History
+                    </h2>
+                    <button id="clear-history" class=" btn text-white flex-2 rounded-full py-2 px-4 bg-green-500 flex items-center">
+                        Clear
+                    </button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <p class="text-gray-500 text-center py-4">No call history yet</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
