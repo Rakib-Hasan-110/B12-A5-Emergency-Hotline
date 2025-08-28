@@ -233,3 +233,54 @@ function handleCallClick(e) {
     // Add to call history with exact time
     addToHistory(name, number);
 }
+
+// Add call to history with exact time
+function addToHistory(name, number) {
+    const now = new Date();
+    // Format time as HH:MM:SS AM/PM
+    const timeString = now.toLocaleTimeString('en-US', {
+        hour12: true,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    callHistory.push({
+        name,
+        number,
+        time: timeString
+    });
+
+    renderHistory();
+}
+
+// Render call history
+function renderHistory() {
+    if (callHistory.length === 0) {
+        historyList.innerHTML = '<p class="text-gray-500 text-center py-4">No call history yet</p>';
+        return;
+    }
+
+    historyList.innerHTML = '';
+    callHistory.forEach(item => {
+        const historyItem = document.createElement('div');
+        historyItem.className = 'py-3 border-b';
+        historyItem.innerHTML = `
+            <div class="flex justify-between items-start">
+                <div>
+                    <h4 class="font-medium">${item.name}</h4>
+                    <p class="text-gray-600 text-sm">${item.number}</p>
+                </div>
+                <span class="text-gray-500 text-sm">${item.time}</span>
+            </div>
+        `;
+        historyList.appendChild(historyItem);
+    });
+}
+
+// Clear history
+function clearHistory() {
+    callHistory = [];
+    renderHistory();
+    alert('Call history cleared');
+}
