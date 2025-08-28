@@ -1,90 +1,93 @@
-1. What is the difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**?
+        1. What is the difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**?
 
-✅ Answer to Question 1: 
+                            Answer to Question 1: 
 
-Difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll
+        Difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll
 
-All these methods are used to access DOM elements, but they differ in functionality:
+        All these methods are used to access DOM elements, but they differ in functionality:
 
-getElementById()
+        getElementById()
 
-- Fetches an element by its unique ID.
+        - Fetches an element by its unique ID.
 
-- If multiple elements share the same ID (which is invalid), only the first match is returned.
+        - If multiple elements share the same ID (which is invalid), only the first match is returned.
 
-getElementsByClassName()
+        getElementsByClassName()
 
-- Returns a live HTMLCollection of all elements with the given class name.
+        - Returns a live HTMLCollection of all elements with the given class name.
 
-- It can select multiple elements at once.
+        - It can select multiple elements at once.
 
-querySelector()
+        querySelector()
 
-- Selects the first element matching a CSS selector (ID, class, tag, etc.).
+        - Selects the first element matching a CSS selector (ID, class, tag, etc.).
 
-- Syntax is similar to CSS: #id, .class, tag.
+        - Syntax is similar to CSS: #id, .class, tag.
 
-querySelectorAll()
+        querySelectorAll()
 
-- Similar to querySelector, but returns all matching elements as a static NodeList.
-
-2. How do you **create and insert a new element into the DOM**?
-
-✅ Answer to Question 2: 
-
-Steps to create and insert a new element into the DOM:
-
-Create the element:
-
-const newElement = document.createElement("p");
+        - Similar to querySelector, but returns all matching elements as a static NodeList.
 
 
-Add content:
+        2. How do you **create and insert a new element into the DOM**?
 
-newElement.innerText = "This is a new paragraph.";
+                            Answer to Question 2: 
+
+        Steps to create and insert a new element into the DOM:
+
+        Create the element:
+
+        const newElement = document.createElement("p");
 
 
-Append to a parent element (e.g., a div with ID container):
+        Add content:
 
-const parent = document.getElementById("container");
-parent.appendChild(newElement);
+        newElement.innerText = "This is a new paragraph.";
 
 
-Now, the new element appears in the DOM.
+        Append to a parent element (e.g., a div with ID container):
 
-3. What is **Event Bubbling** and how does it work?
+        const parent = document.getElementById("container");
+        parent.appendChild(newElement);
 
-✅ Answer to Question 3: 
+        Now, the new element appears in the DOM.
 
-Event Bubbling means when an event occurs on an element, it propagates upward through its parent elements, all the way up to the document root.
 
-Example: Clicking on a button triggers click events for its parent <div>, <body>, and document unless stopped.
+        3. What is **Event Bubbling** and how does it work?
 
-4. What is **Event Delegation** in JavaScript? Why is it useful?
+                            Answer to Question 3: 
 
-✅ Answer to Question 4: 
+        Event Bubbling means when an event occurs on an element, it propagates upward through its parent elements, all the way up to the document root.
 
-Event Delegation is a technique where a single event listener is attached to a parent element to manage events for its child elements using event bubbling.
+        Example: Clicking on a button triggers click events for its parent <div>, <body>, and document unless stopped.
 
-Benefits:
-- Reduces code duplication
-- Improves performance (fewer event listeners)
-- Handles dynamically added elements easily
 
-5. What is the difference between **preventDefault() and stopPropagation()** methods?
+        4. What is **Event Delegation** in JavaScript? Why is it useful?
 
-✅ Answer to Question 5: 
+                        Answer to Question 4: 
 
-Difference between preventDefault() and stopPropagation():
+        Event Delegation is a technique where a single event listener is attached to a parent element to manage events for its child elements using event bubbling.
 
-preventDefault()
+        Benefits:
+        - Reduces code duplication
+        - Improves performance (fewer event listeners)
+        - Handles dynamically added elements easily
 
-Stops the browser’s default action for an event.
 
-Example: Prevent form submission from reloading the page.
+        5. What is the difference between **preventDefault() and stopPropagation()** methods?
 
-stopPropagation()
+                        Answer to Question 5: 
 
-Stops the event from bubbling up to parent elements.
+        Difference between preventDefault() and stopPropagation():
 
-Example: Prevents click on a child element from triggering the parent’s click event.
+        preventDefault()
+
+        Stops the browser’s default action for an event.
+
+        Example: Prevent form submission from reloading the page.
+
+        stopPropagation()
+
+        Stops the event from bubbling up to parent elements.
+
+        Example: Prevents click on a child element from triggering the parent’s click event.
