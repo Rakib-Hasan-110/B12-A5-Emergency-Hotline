@@ -96,3 +96,76 @@ const clearHistoryBtn = document.getElementById('clear-history');
 const heartCountElement = document.getElementById('heart-count');
 const coinCountElement = document.getElementById('coin-count');
 const copyCountElement = document.getElementById('copy-count');
+
+// Initialize the page
+function init() {
+    renderCards();
+    updateStats();
+    clearHistoryBtn.addEventListener('click', clearHistory);
+}
+
+// Render emergency service cards
+function renderCards() {
+    cardContainer.innerHTML = '';
+
+    emergencyServices.forEach(service => {
+        const iconOrImage = service.img
+            ? `<img src="${service.img}" alt="${service.name}" class=" w-20 h-10 bg-red-200 rounded-lg p-1 object-contain">`
+            : `<i class="${service.icon}"></i>`; 
+        const iconContainerClasses = service.img
+            ? 'w-12 h-12 rounded-full flex items-center justify-center p-2'
+            : `${service.iconColor} w-12 h-12 rounded-full flex items-center justify-center text-white`;
+
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-lg shadow-md overflow-hidden card-hover';
+        card.innerHTML = `
+            <div class="p-4 flex items-center border-b">
+                <div class="${iconContainerClasses} mr-3">
+                    ${iconOrImage}
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-bold">${service.name}</h3>
+                    <p class="text-sm text-gray-500">${service.nameEnglish}</p>
+                </div>
+                <button class="heart-btn text-gray-300 hover:text-red-500 text-xl" data-id="${service.id}">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="text-2xl font-bold text-black mb-2">${service.number}</div>
+                <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                    ${service.category}
+                </span>
+                <div class="flex space-x-2 mt-4">
+                    <button class="btn-copy flex-1 py-2 px-4 bg-gray-100 text-gray-600 rounded-lg hover:bg-blue-100 flex items-center justify-center" data-number="${service.number}" data-name="${service.name}">
+                        <i class="far fa-copy mr-2"></i> Copy
+                    </button>
+                    <button class="btn-call flex-1 py-2 px-4 bg-secondary text-white rounded-lg hover:bg-red-600 flex items-center justify-center" data-number="${service.number}" data-name="${service.name}">
+                        <i class="fas fa-phone mr-2"></i> Call
+                    </button>
+                </div>
+            </div>
+        `;
+        cardContainer.appendChild(card);
+    });
+
+    // Add event listeners to buttons
+    document.querySelectorAll('.heart-btn').forEach(btn => {
+        btn.addEventListener('click', handleHeartClick);
+    });
+
+    document.querySelectorAll('.btn-copy').forEach(btn => {
+        btn.addEventListener('click', handleCopyClick);
+    });
+
+    document.querySelectorAll('.btn-call').forEach(btn => {
+        btn.addEventListener('click', handleCallClick);
+    });
+}
+
+// Update statistics in navbar
+function updateStats() {
+    heartCountElement.textContent = heartCount;
+    coinCountElement.textContent = coinCount;
+    copyCountElement.textContent = copyCount;
+}
